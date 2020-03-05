@@ -2,13 +2,20 @@
   "name": "path-schema",
   "version": "0.0.1",
   "description": "Dynamic path generator and parser",
-  "main": "index.js",
+  "main": "out/path.js",
   "scripts": {
+    "build": "tsc",
     "test": "jest --collect-coverage"
   },
+  "files": [
+    "out"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huaguhzheng/path-schema.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "author": "",
   "license": "MIT",
