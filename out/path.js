@@ -111,7 +111,7 @@ var Path = /** @class */ (function () {
                 return prev;
             }, {});
         }
-        return {};
+        return null;
     };
     /**
      * Derive a new path from the current path, with the current path as the parent path

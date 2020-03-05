@@ -103,7 +103,7 @@ export class Path<P = void> {
    * @param path path string to be parse
    * @return empty object if path not matched or parameters object
    */
-  public toObject(path: string) {
+  public toObject(path: string): P | null {
     if (this.regexp.test(path)) {
       const paths = path.replace(/^\//, '').split('/');
       return this._params.reduce((prev: any, next, index) => {
@@ -115,7 +115,7 @@ export class Path<P = void> {
         return prev;
       }, {});
     }
-    return {};
+    return null;
   }
 
   /**

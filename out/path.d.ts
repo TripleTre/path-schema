@@ -18,7 +18,7 @@ export declare class Path<P = void> {
      * @param path path string to be parse
      * @return empty object if path not matched or parameters object
      */
-    toObject(path: string): any;
+    toObject(path: string): P | null;
     /**
      * Derive a new path from the current path, with the current path as the parent path
      * @param pattern pattern string
