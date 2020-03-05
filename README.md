@@ -1,6 +1,6 @@
 # path-schema
 
-Dynamic path generator and parser. Width Comprehensive typescript type checking.
+Dynamic path generator and parser. With Comprehensive typescript type checking.
 
 ## Install
 
@@ -13,6 +13,8 @@ npm i path-schema --save
 ### Create path object
 
 ```typescript
+import { Path } from 'path-schema';
+
 // Create static path
 var p = new Path('/item1/item2');
 
