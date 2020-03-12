@@ -77,7 +77,7 @@ var Path = /** @class */ (function () {
         }, '');
     };
     Path.prototype._toRegExp = function () {
-        return new RegExp(this._params.reduce(function (prev, next) {
+        return new RegExp('^' + this._params.reduce(function (prev, next) {
             if (next[1]) { // required
                 prev += '/';
                 if (next[2]) { // isValue
@@ -92,7 +92,7 @@ var Path = /** @class */ (function () {
                 prev += "([^/]+)?";
             }
             return prev;
-        }, ''));
+        }, '') + '$');
     };
     /**
      * Parse the parameters object from the path
