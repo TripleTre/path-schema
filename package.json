@@ -1,6 +1,6 @@
 {
   "name": "path-schema",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Dynamic path generator and parser",
   "main": "out/path.js",
   "scripts": {

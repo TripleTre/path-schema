@@ -65,6 +65,7 @@ test('to regexp', () => {
 
   const p2 = p1.extends<{a: string, b: string}>('/:a/:b?');
   expect(p2.regexp.test('/item1/item2/a/b')).toBe(true);
+  expect(p2.regexp.test('/item1/item2/a/b/c')).toBe(false);
   expect(p2.regexp.test('/item1/item2/a')).toBe(true);
   expect(p2.regexp.test('/item1/item2/a/')).toBe(true);
 });
@@ -74,6 +75,6 @@ test('to state', () => {
 
   const p2 = p1.extends<{a: string, b: string}>('/:a/:b?');
   expect(p2.toObject('/item1/item2/aaa/bbb')).toStrictEqual({a: 'aaa', b: 'bbb'});
-  expect(p2.toObject('/item')).toStrictEqual({});
+  expect(p2.toObject('/item')).toBe(null);
   expect(p2.toObject('/item1/item2/123')).toStrictEqual({a: '123'});
 });

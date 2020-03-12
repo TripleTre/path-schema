@@ -82,7 +82,7 @@ export class Path<P = void> {
   }
 
   private _toRegExp() {
-    return new RegExp(this._params.reduce((prev, next) => {
+    return new RegExp('^' + this._params.reduce((prev, next) => {
       if (next[1]) { // required
         prev += '/';
         if (next[2]) { // isValue
@@ -95,7 +95,7 @@ export class Path<P = void> {
         prev += `([^/]+)?`;
       }
       return prev;
-    }, ''));
+    }, '') + '$');
   }
 
   /**
