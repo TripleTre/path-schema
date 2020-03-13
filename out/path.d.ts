@@ -1,11 +1,11 @@
-declare type ParamListType = [string, boolean, boolean][];
 export declare class Path<P = void> {
     private _params;
+    parent: Path;
     /** router string like react router4 */
     patternString: string;
     /** Regular expression object to use for validation */
     regexp: RegExp;
-    constructor(pattern: string, parentParamsList?: ParamListType);
+    constructor(pattern: string, parent?: Path<any>);
     /**
      * Generate path from parameter object
      * @param params parameter object
@@ -25,5 +25,4 @@ export declare class Path<P = void> {
      */
     extends<E>(pattern: string): Path<P extends void ? E : E & P>;
 }
-export {};
 //# sourceMappingURL=path.d.ts.map

@@ -2,10 +2,11 @@ function isParamsType(arg) {
     return !!arg;
 }
 var Path = /** @class */ (function () {
-    function Path(pattern, parentParamsList) {
+    function Path(pattern, parent) {
         var _this = this;
-        if (parentParamsList === void 0) { parentParamsList = []; }
         this._params = [];
+        var parentParamsList = ((parent === null || parent === void 0 ? void 0 : parent._params) || []);
+        this.parent = parent;
         this._params = parentParamsList.concat(this._params);
         var required = parentParamsList.some(function (v) { return v[1] === false; }) || false;
         pattern.split('/')
@@ -118,7 +119,7 @@ var Path = /** @class */ (function () {
      * @param pattern pattern string
      */
     Path.prototype.extends = function (pattern) {
-        return new Path(pattern, this._params);
+        return new Path(pattern, this);
     };
     return Path;
 }());

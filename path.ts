@@ -9,12 +9,15 @@ function isParamsType(arg: any): arg is ParamsType {
 export class Path<P = void> {
   private _params: ParamListType = [];
 
+  public parent: Path;
   /** router string like react router4 */
   public patternString: string;
   /** Regular expression object to use for validation */
   public regexp: RegExp;
 
-  constructor(pattern: string, parentParamsList: ParamListType = []) {
+  constructor(pattern: string, parent?: Path<any>) {
+    const parentParamsList = (parent?._params || []);
+    this.parent = parent;
     this._params = parentParamsList.concat(this._params);
     let required = parentParamsList.some(v => v[1] === false) || false;
     pattern.split('/')
@@ -123,6 +126,6 @@ export class Path<P = void> {
    * @param pattern pattern string
    */
   public extends<E>(pattern: string): Path<P extends void ? E : E & P> {
-    return new Path(pattern, this._params);
+    return new Path(pattern, this);
   }
 }
